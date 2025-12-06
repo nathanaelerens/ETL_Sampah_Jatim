@@ -1,0 +1,3 @@
+{"timestamp":"2025-12-05T18:13:32.018863Z","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager","filename":"manager.py","lineno":179}
+{"timestamp":"2025-12-05T18:13:32.019395Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/my_dags.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2025-12-05T18:13:32.361212Z","level":"warning","event":"The `airflow.operators.python.PythonOperator` attribute is deprecated. Please use `'airflow.providers.standard.operators.python.PythonOperator'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/my_dags.py","lineno":3,"logger":"py.warnings"}
