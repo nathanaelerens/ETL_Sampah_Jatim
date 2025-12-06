@@ -41,8 +41,10 @@ def download_sipsn(url, output_dir):
     download_dir = output_dir 
 
     # 🚨 CHANGE 2: Ensure the directory exists before starting the download
-    if not os.path.exists(download_dir):
-        os.makedirs(download_dir)
+    # if not os.path.exists(download_dir):
+    #     os.makedirs(download_dir)
+
+    os.makedirs(download_dir, exist_ok=True)
 
     chrome_options = Options()
     chrome_options.binary_location = "/usr/bin/chromium"
@@ -75,9 +77,20 @@ def download_sipsn(url, output_dir):
         # select_tahun = Select(driver.find_element(By.ID, "filter_id_tahun"))
         # select_tahun.select_by_visible_text("2024")
         # time.sleep(1)
-
+        # ==================================
+        # 🚨 NEW STEP: PILIH JUMLAH ENTRI ("SEMUA")
+        # ==================================
+        # Locate the dropdown using its NAME attribute confirmed from HTML
+        select_entries_element = driver.find_element(By.NAME, "tabeldata_length")
+        select_entries = Select(select_entries_element)
+        
+        # Select by value "-1", which corresponds to the "SEMUA" option
+        select_entries.select_by_value("-1")
+        
+        # Wait for the table data to fully load (this takes longer for all entries)
+        time.sleep(5)
         # ========================
-        # PILIH PROVINSI (HANYA YANG INI DIUBAH)
+        # PILIH PROVINSI (HANYA INI YANG DIGUNAKAN)
         # ========================
         select_prov = Select(driver.find_element(By.ID, "filter_id_propinsi"))
         select_prov.select_by_visible_text("Jawa Timur")
